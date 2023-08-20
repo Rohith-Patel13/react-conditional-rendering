@@ -6,23 +6,21 @@ import './App.css'
 
 class App extends Component {
   state = {
-    isLoggedIn: true,
-  }
-
-  renderAuthenticateButton = () => {
-    const {isLoggedIn} = this.state
-
-    if (isLoggedIn) {
-      return <button type="button">Logout</button>
-    }
-    return <button type="button">Login</button>
+    isLoggedIn: false,
   }
 
   render() {
+    const {isLoggedIn} = this.state
+    let authenticateButton
+    if (isLoggedIn) {
+      authenticateButton = <button type="button">Logout</button>
+    } else {
+      authenticateButton = <button type="button">Login</button>
+    }
     return (
       <div className="container">
         <Welcome greeting="Hello" name="User" />
-        {this.renderAuthenticateButton()}
+        {authenticateButton}
       </div>
     )
   }
